@@ -1,35 +1,51 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./categories.styles.scss";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
+  const categories = [
+    {
+      id: 1,
+      title: "Hats",
+      imageUrl: "https://i.ibb.co/cvpntL1/hats.png",
+    },
+    {
+      id: 2,
+      title: "Jackets",
+      imageUrl: "https://i.ibb.co/px2tCc3/jackets.png",
+    },
+    {
+      id: 3,
+      title: "Sneakers",
+      imageUrl: "https://i.ibb.co/0jqHpnp/sneakers.png",
+    },
+    {
+      id: 4,
+      title: "Womens",
+      imageUrl: "https://i.ibb.co/GCCdy8t/womens.png",
+    },
+    {
+      id: 5,
+      title: "Mens",
+      imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
+    },
+  ];
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="page-container">
+      <div className="categories-container">
+        {categories.map((category) => (
+          <div className="category-container">
+            <div
+              className="background-image"
+              style={{ backgroundImage: `url(${category.imageUrl})` }}
+            />
+            <div className="category-title">
+              <h2>{category.title}</h2>
+              <p>Shop Now</p>
+            </div>
+          </div>
+        ))}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    </div>
+  );
+};
 
-export default App
+export default App;
