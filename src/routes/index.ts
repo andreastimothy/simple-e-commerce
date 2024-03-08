@@ -1,4 +1,5 @@
 export const ROUTES = {
   NAVBAR: "/",
-  SHOP: "/shop"
+  SHOP: "/shop",
+  LOGIN: "/login",
 };

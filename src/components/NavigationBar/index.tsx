@@ -19,6 +19,9 @@ export default function NavigationBar() {
             <Link className="nav-link" to={ROUTES.SHOP}>
               SHOP
             </Link>
+            <Link className="nav-link" to={ROUTES.LOGIN}>
+              LOG IN
+            </Link>
           </div>
         </div>
       </div>
