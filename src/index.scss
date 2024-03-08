@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #a6a6a6;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -29,4 +29,12 @@ body {
   button {
     background-color: #f9f9f9;
   }
+}
+
+a {
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
 }

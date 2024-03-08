@@ -7,7 +7,7 @@ import './index.styles.scss';
 export default function NavigationBar() {
   return (
     <Fragment>
-      <div style={{ backgroundColor: "#242424" }}>
+      <div style={{ backgroundColor: "black" }}>
         <div
           style={{ width: "85vw", margin: "auto" }}
           className="navigation-bar"
