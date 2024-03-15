@@ -1,4 +1,10 @@
-import { GoogleAuthProvider, User, getAuth, signInWithPopup } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  User,
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithPopup,
+} from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 import { firebaseApp } from "./../utils/firebase/firebase.config";
 
@@ -12,12 +18,7 @@ const db = getFirestore();
 const auth = getAuth(firebaseApp);
 const signInWithGooglePopup = () => signInWithPopup(auth, provider);
 
-export const login = async () => {
-  const { user } = await signInWithGooglePopup();
-  await createUser(user);
-};
-
-export const createUser = async (userAuth: User) => {
+export const createUser = async (userAuth: User, additionalInfo: {} = {}) => {
   //Hey! Give me the reference of the data from "users" in the "db" with this userID
   const userDocRef = doc(db, "users", userAuth.uid);
 
@@ -33,10 +34,23 @@ export const createUser = async (userAuth: User) => {
         displayName,
         email,
         createdAt,
+        ...additionalInfo,
       });
     } catch (error) {
       console.log(error);
     }
   }
   return userDocRef;
+};
+
+export const login = async () => {
+  const { user } = await signInWithGooglePopup();
+  await createUser(user);
+};
+
+export const loginWithEmailAndPassword = async (
+  email: string,
+  password: string
+) => {
+  return await createUserWithEmailAndPassword(auth, email, password);
 };
